@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shaklip – YouTube link to viral shorts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4fa;--surface:#fff;--ink:#14162b;--mute:#5b6080;--line:#d9dcec;--hot:#ff2e75;--hot-ink:#fff;--cool:#1fb8cc;--bar:#c9cde4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101226;--surface:#1a1d38;--ink:#eef0ff;--mute:#9a9fc4;--line:#2b2f55;--bar:#33385f}}
+:root[data-theme="dark"]{--bg:#101226;--surface:#1a1d38;--ink:#eef0ff;--mute:#9a9fc4;--line:#2b2f55;--bar:#33385f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:-.02em}
+.logo i{display:inline-block;width:.8em;height:.8em;background:var(--hot);border-radius:2px;transform:rotate(45deg);margin-right:.45em}
+nav span{color:var(--mute);font-size:.9rem}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);line-height:1;letter-spacing:-.04em;font-weight:800;margin:40px 0 18px;max-width:14ch}
+.lead{font-size:1.15rem;color:var(--mute);max-width:52ch;margin:0 0 28px}
+.box{display:flex;gap:10px;flex-wrap:wrap;max-width:680px}
+.box input{flex:1 1 280px;font:inherit;padding:16px 18px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+.box input:focus-visible,.btn:focus-visible,select:focus-visible{outline:3px solid var(--cool);outline-offset:2px}
+.btn{font:inherit;font-weight:600;padding:16px 26px;border-radius:12px;border:0;background:var(--hot);color:var(--hot-ink);cursor:pointer}
+.btn.alt{background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:.9rem}
+.hint{font-size:.85rem;color:var(--mute);margin:10px 0 0}
+.err{color:var(--hot);font-weight:600;min-height:1.4em;margin:8px 0 0}
+#app{margin:44px 0 20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.steps li{color:var(--mute);display:flex;gap:10px;align-items:center}
+.steps li.on{color:var(--ink);font-weight:600}.steps li.done{color:var(--cool)}
+.steps li::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.5}
+.steps li.on::before{opacity:1;animation:p 1s infinite}.steps li.done::before{opacity:1}
+@keyframes p{50%{transform:scale(1.6)}}
+.tl{display:flex;align-items:flex-end;gap:3px;height:120px;margin:14px 0 6px}
+.tl b{flex:1;background:var(--bar);border-radius:2px 2px 0 0;min-width:2px;transition:background .4s}
+.tl b.hit{background:var(--hot)}
+.tlh{display:flex;justify-content:space-between;color:var(--mute);font-size:.8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:22px}
+.clip{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.ph{flex:0 0 96px;aspect-ratio:9/16;border-radius:10px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding:6px}
+.ph .cap{font-weight:800;font-size:.72rem;line-height:1.15;text-align:center;color:#fff;text-shadow:0 1px 3px #000;text-transform:none}
+.ph .cap em{font-style:normal;color:#ffe14a}
+.ph::after{content:"9:16";position:absolute;top:6px;left:6px;font-size:.6rem;color:#fff;background:#0007;padding:1px 5px;border-radius:4px}
+.meta{display:flex;flex-direction:column;gap:6px;min-width:0}
+.score{font-size:2rem;font-weight:800;line-height:1;color:var(--hot)}
+.meta small{color:var(--mute)}
+.meta h3{margin:0;font-size:1rem;line-height:1.25}
+.opts{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px}
+select{font:inherit;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+section{padding:46px 0;border-top:1px solid var(--line)}
+section h2{font-size:1.9rem;letter-spacing:-.03em;margin:0 0 20px;max-width:24ch;line-height:1.1}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px}
+.feat h3{margin:0 0 6px;font-size:1.05rem}.feat p{margin:0;color:var(--mute)}
+.pipe{display:flex;gap:10px;flex-wrap:wrap}
+.pipe div{flex:1 1 150px;border-left:3px solid var(--hot);padding:2px 0 2px 12px}
+.pipe b{display:block}.pipe span{color:var(--mute);font-size:.9rem}
+.navl{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:2px solid var(--hot)}
+.tog{display:inline-flex;border:2px solid var(--line);border-radius:12px;padding:3px;margin-bottom:22px;background:var(--surface)}
+.tog button{font:inherit;font-weight:600;border:0;background:none;color:var(--mute);padding:8px 18px;border-radius:9px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tog button:focus-visible{outline:3px solid var(--cool);outline-offset:2px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.plan.pop{border:2px solid var(--hot)}
+.plan h3{margin:0;font-size:1.1rem}
+.price{font-size:2.1rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+.price small{font-size:.9rem;font-weight:400;color:var(--mute)}
+.sub{color:var(--mute);font-size:.85rem;min-height:1.3em}
+.badge{align-self:flex-start;background:var(--hot);color:var(--hot-ink);font-size:.78rem;font-weight:600;padding:2px 9px;border-radius:20px}
+.plan ul{list-style:none;margin:4px 0 8px;padding:0;display:grid;gap:6px;font-size:.92rem;flex:1}
+.plan li::before{content:"✓ ";color:var(--cool);font-weight:800}
+.plan .btn{padding:12px;text-align:center}
+.plan.free .btn{background:var(--surface);color:var(--ink);border:2px solid var(--line)}
+.ad{margin-top:22px;border:2px dashed var(--line);border-radius:12px;padding:22px;text-align:center;color:var(--mute);font-size:.9rem}
+.ad a{color:var(--hot);font-weight:600}
+.adov{position:fixed;inset:0;background:#000c;display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.adov[hidden]{display:none}
+.adbox{background:var(--surface);border-radius:16px;padding:26px;max-width:440px;width:100%;text-align:center}
+.adbox .ad{margin:0 0 16px;min-height:120px;display:flex;align-items:center;justify-content:center}
+.adbox .btn{margin:0 4px}
+.adbar{height:8px;background:var(--bar);border-radius:6px;overflow:hidden;margin:12px 0}
+.adbar i{display:block;height:100%;width:0;background:var(--hot)}
+.wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-weight:800;font-size:.8rem;color:#fff;opacity:.55;pointer-events:none}
+.tag{font-size:.78rem;color:var(--cool);font-weight:600}
+footer{padding:30px 0 50px;color:var(--mute);font-size:.85rem}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}
+#toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><div class="logo"><i></i>Shaklip</div><a href="#pricing" class="navl">Pricing</a></nav>
+
+<header>
+<h1>Paste a YouTube link. Get shorts that can go viral.</h1>
+<p class="lead">Shaklip finds the strongest moments in a long video, cuts them to 9:16, adds captions and zooms, and gives you files ready for Shorts, Reels and TikTok.</p>
+<div class="box">
+<input id="url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." aria-label="YouTube link">
+<button class="btn" id="go">Find viral clips</button>
+</div>
+<p class="err" id="err" role="alert"></p>
+<p class="hint">Demo: the analysis below is simulated. The real AI backend is described under “How it works”.</p>
+</header>
+
+<div id="app" hidden>
+<div class="panel" id="prog"><ul class="steps" id="steps"></ul></div>
+<div id="out" hidden>
+<div class="panel">
+<strong>Virality score across the video</strong>
+<div class="tl" id="tl" aria-label="Virality score timeline"></div>
+<div class="tlh"><span>0:00</span><span id="end"></span></div>
+<div class="opts">
+<label>Preview as <select id="plan"><option value="0">Free</option><option value="1">Basic</option><option value="2">Student</option><option value="3">Pro</option><option value="4">Ultra Pro Max</option></select></label>
+<label>Captions <select id="capstyle"></select></label>
+<label>Clips <select id="count"><option>3</option><option>5</option></select></label>
+</div>
+</div>
+<div class="grid" id="clips"></div>
+<div class="ad" id="adslot" role="complementary" aria-label="Advertisement">Ad space for free users. <a href="#pricing">Go ad-free</a></div>
+</div>
+</div>
+
+<section>
+<h2>What you get from one link</h2>
+<div class="feat">
+<div><h3>Viral moment detection</h3><p>Scores every few seconds by hook strength, emotion, pace and topic shifts, then picks the best windows.</p></div>
+<div><h3>Auto reframe to 9:16</h3><p>Tracks the speaker’s face and keeps them centered in a vertical frame.</p></div>
+<div><h3>Captions that hold attention</h3><p>Word-by-word subtitles with highlighted keywords, in Bangla, English and more.</p></div>
+<div><h3>Hook title and hashtags</h3><p>Each clip gets a first-line hook, a title and tags for the platform you pick.</p></div>
+</div>
+</section>
+
+<section>
+<h2>How it works</h2>
+<div class="pipe">
+<div><b>Download</b><span>yt-dlp fetches the video and audio</span></div>
+<div><b>Transcribe</b><span>Whisper makes timestamped text</span></div>
+<div><b>Score</b><span>An LLM ranks segments for virality</span></div>
+<div><b>Edit</b><span>FFmpeg cuts, crops, zooms, burns captions</span></div>
+<div><b>Export</b><span>MP4 files, 1080×1920</span></div>
+</div>
+</section>
+
+<section id="pricing">
+<h2>Pricing</h2>
+<div class="tog" role="group" aria-label="Billing period"><button id="bm" aria-pressed="true">Monthly</button><button id="by" aria-pressed="false">Annual</button></div>
+<div class="plans" id="plans"></div>
+<p class="hint">Student plan needs identity verification (student ID or school email). Prices in USD.</p>
+</section>
+
+<footer>Shaklip is a prototype. Only process videos you own or have permission to reuse.</footer>
+</div>
+<div class="adov" id="adov" role="dialog" aria-modal="true" aria-labelledby="adt" hidden><div class="adbox"><div class="ad">Ad plays here</div><p id="adt"></p><div class="adbar"><i id="adb"></i></div><p id="adc"></p><button class="btn alt" id="adskip">Skip (demo only)</button><button class="btn alt" id="adx">Cancel</button></div></div>
+<div id="toast" role="status"></div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var HOOKS=["Nobody tells you this about starting out","The mistake that cost me everything","Wait for the part at the end","This changed how I think","Why most people quit too early","The one habit behind it all","I was completely wrong about this"];
+var COLORS=[["#ff2e75","#5b2bd9"],["#1fb8cc","#233a8a"],["#ffb020","#c1274b"],["#3ddc97","#1b5e7a"],["#9b5cff","#e0457b"]];
+function vid(u){var m=u.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);return m?m[1]:null}
+function rng(s){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return function(){h=(h*1664525+1013904223)>>>0;return h/4294967296}}
+function fmt(s){s=Math.round(s);return Math.floor(s/60)+":"+("0"+s%60).slice(-2)}
+function toast(t){var e=$("toast");e.textContent=t;e.className="show";setTimeout(function(){e.className=""},3200)}
+var data=null;
+function analyze(id){
+var r=rng(id),N=60,total=900+Math.floor(r()*2700),sc=[],i;
+for(i=0;i<N;i++){var v=.2+r()*.35;sc.push(v)}
+for(var p=0;p<6;p++){var c=Math.floor(r()*N);for(i=-3;i<=3;i++){if(sc[c+i]!==undefined)sc[c+i]+=(.45-Math.abs(i)*.1)*(.6+r()*.4)}}
+sc=sc.map(function(v){return Math.min(1,v)});
+var idx=sc.map(function(v,k){return k}).sort(function(a,b){return sc[b]-sc[a]});
+var picks=[];
+idx.forEach(function(k){if(picks.length<5&&picks.every(function(q){return Math.abs(q-k)>4}))picks.push(k)});
+var seg=total/N;
+data={total:total,sc:sc,clips:picks.map(function(k,n){
+var dur=28+Math.floor(r()*28),st=Math.max(0,Math.min(total-dur,k*seg));
+return{k:k,start:st,dur:dur,score:Math.round(72+sc[k]*27*(1-n*.04)),hook:HOOKS[Math.floor(r()*HOOKS.length)],col:COLORS[n%5]}
+})};
+}
+function render(){
+var tl=$("tl");tl.innerHTML="";
+var n=+$("count").value,hits=data.clips.slice(0,n).map(function(c){return c.k});
+data.sc.forEach(function(v,k){var b=document.createElement("b");b.style.height=(v*100)+"%";
+if(hits.some(function(h){return Math.abs(h-k)<=1}))b.className="hit";tl.appendChild(b)});
+$("end").textContent=fmt(data.total);
+var C=CAP[+$("plan").value];fillCaps();var st=+$("capstyle").value,g=$("clips");g.innerHTML="";$("adslot").hidden=!C.ads;
+data.clips.slice(0,n).sort(function(a,b){return b.score-a.score}).forEach(function(c,i){
+var w=c.hook.split(" "),cap=st==0?w.slice(0,2).join(" ")+" <em>"+w[2]+"</em> "+w.slice(3,5).join(" "):st==3?"<em>"+w.slice(0,3).join(" ")+"</em> "+w.slice(3,5).join(" "):w.slice(0,5).join(" "),cs=(st==2?"background:#000b;padding:3px 5px;border-radius:4px;":"")+(st==4?"font-size:.8rem;text-transform:uppercase;":"");
+var d=document.createElement("div");d.className="clip";
+d.innerHTML='<div class="ph" style="background:linear-gradient(160deg,'+c.col[0]+','+c.col[1]+')"><div class="cap" style="'+cs+'">'+cap+'</div>'+(C.wm?'<span class="wm">Shaklip</span>':'')+'</div>'+
+'<div class="meta"><div class="score">'+c.score+'</div><small>virality score</small><h3>'+c.hook+'</h3><small>'+fmt(c.start)+' to '+fmt(c.start+c.dur)+' ('+c.dur+'s)</small><span class="tag">'+(C.full?'Full AI edit: zooms, cuts, sound, captions':'Light edit: trim and captions')+'</span><button class="btn alt">Export MP4 ('+C.q+')</button></div>';
+d.querySelector("button").onclick=function(){toast("Demo only. Connect the backend to render and download this clip.")};
+g.appendChild(d)});
+}
+$("capstyle").onchange=$("count").onchange=$("plan").onchange=function(){if(data)render()};
+$("go").onclick=function(){
+var u=$("url").value.trim(),id=vid(u);if(id&&!go_ok){gate();return}go_ok=false;
+if(!id){$("err").textContent="Paste a valid YouTube link, for example https://www.youtube.com/watch?v=dQw4w9WgXcQ";return}
+$("err").textContent="";
+$("app").hidden=false;$("out").hidden=true;$("prog").hidden=false;
+var S=["Downloading video","Transcribing speech","Scoring hooks and emotion","Reframing to 9:16 and adding captions"],ul=$("steps");
+ul.innerHTML=S.map(function(s){return"<li>"+s+"</li>"}).join("");
+var L=ul.children,k=0;
+(function tick(){
+if(k>0)L[k-1].className="done";
+if(k<S.length){L[k].className="on";k++;setTimeout(tick,850)}
+else{analyze(id);$("prog").hidden=true;$("out").hidden=false;render();$("app").scrollIntoView({behavior:"smooth",block:"start"})}
+})();
+};
+var P=[{n:"Free",m:0,y:0,free:1,f:["1 video per day, short ad first","More videos: watch a 5-minute ad each","Light editing","Shaklip watermark","Up to 1080p"]},
+{n:"Basic",m:5,y:55.9,f:["2 videos per day","No ads, no watermark","Light editing","Up to 2K quality"]},
+{n:"Student",m:3,y:33,f:["2 videos per day","No ads, no watermark","Light editing","Up to 2K quality","Student ID verification"]},
+{n:"Pro",m:10,y:110,pop:1,f:["3 videos per day","No ads, no watermark","Full AI editing, no manual work","All caption styles","Up to 3K quality"]},
+
+{n:"Ultra Pro Max",m:19.99,y:239.99,f:["Unlimited videos","No ads, no watermark","Full AI editing, no manual work","All caption styles","Up to 4K quality"]}];
+var yearly=false;
+function M(x){return"$"+(x%1?x.toFixed(2):x)}
+function plans(){
+$("plans").innerHTML=P.map(function(p,i){
+var big=yearly?p.y:p.m,per=yearly?"/year":"/month",sub="",bd="";
+if(p.free){sub="Free forever"}
+else if(yearly){sub=M(p.y/12)+" per month, billed yearly";var s=Math.round((1-p.y/(p.m*12))*100);if(s>0)bd='<span class="badge">Save '+s+'%</span>'}
+else sub="Billed monthly";
+return'<div class="plan'+(p.pop?' pop':'')+(p.free?' free':'')+'"><h3>'+p.n+'</h3>'+(bd||'<span style="height:1.5em"></span>')+'<div class="price">'+(p.free?'$0':M(big))+(p.free?'':'<small>'+per+'</small>')+'</div><div class="sub">'+sub+'</div><ul>'+p.f.map(function(x){return'<li>'+x+'</li>'}).join("")+'</ul><button class="btn" data-i="'+i+'">'+(p.free?'Start free':'Choose '+p.n)+'</button></div>'}).join("");
+}
+function setP(y){yearly=y;$("bm").setAttribute("aria-pressed",!y);$("by").setAttribute("aria-pressed",y);plans()}
+$("bm").onclick=function(){setP(false)};$("by").onclick=function(){setP(true)};
+$("plans").onclick=function(e){var b=e.target.closest("button[data-i]");if(!b)return;var p=P[+b.dataset.i];toast(p.free?"Free plan selected.":p.n+" selected. Payment gateway is not connected yet.")};
+plans();
+var CAP=[{lim:1,q:"1080p",ads:1,wm:1,full:0,caps:[1,2]},{lim:2,q:"2K",caps:[1,2]},{lim:2,q:"2K",caps:[1,2]},{lim:3,q:"3K",full:1,caps:[0,1,2,3,4]},{lim:999,q:"4K",full:1,caps:[0,1,2,3,4]}],CN=["Highlight word","Plain white","Boxed","Karaoke","Big pop"],go_ok=false,used=0;
+function fillCaps(){var s=$("capstyle"),cur=s.value,a=CAP[+$("plan").value].caps;s.innerHTML=a.map(function(i){return'<option value="'+i+'">'+CN[i]+'</option>'}).join("");s.value=a.indexOf(+cur)>-1?cur:a[0]}
+function adrun(sec,cb){
+var o=$("adov"),left=sec,t;
+$("adt").textContent=sec>60?"Watch this 5-minute ad to generate another video":"Short ad before your free video of the day";
+o.hidden=false;
+function upd(){$("adb").style.width=((sec-left)/sec*100)+"%";$("adc").textContent="Ad ends in "+fmt(left)}
+function fin(){clearInterval(t);o.hidden=true;cb()}
+upd();t=setInterval(function(){left--;upd();if(left<=0)fin()},1000);
+$("adskip").onclick=fin;
+$("adx").onclick=function(){clearInterval(t);o.hidden=true};
+}
+function gate(){
+var C=CAP[+$("plan").value];
+if(!C.ads&&used>=C.lim){toast("Daily limit reached for this plan. Upgrade for more videos.");$("pricing").scrollIntoView({behavior:"smooth"});return}
+function done(){used++;go_ok=true;$("go").click()}
+if(!C.ads){done();return}
+adrun(used<C.lim?8:300,done);
+}
+$("url").addEventListener("keydown",function(e){if(e.key==="Enter")$("go").click()});
+})();
+</script>
+</body>
+</html>
